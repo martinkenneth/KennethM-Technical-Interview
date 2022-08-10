@@ -1,6 +1,63 @@
-/* TODO: Update Font */
+/* todo: Update Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    /* outline: 1px dotted red; */
+}
+
+main {
+    width: 70%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 section {
     margin-top: 12px;
     margin-bottom: 8px;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#current_card_hand {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#history_of_poker {
+    display: flex;
+    flex-direction: column;
+}
+
+#history_of_poker > div {
+    /* padding: 20px 20px 5px 20px; */
+    width: 100%;
+    aspect-ratio: 16/6;
+}
+#history_of_poker > div > img {
+    aspect-ratio: 16 /6;
+    width: 100%;
+    object-fit: cover;
+}
+#history_of_poker > small:first-of-type {
+    text-align: right;
+    margin-right: 20px;
+    font-style: italic;
+}
+#history_of_poker > small:last-of-type,
+#history_of_poker > small:last-of-type > a {
+    font-size: 12px;
+    white-space: nowrap;
+}
+a {
+    text-decoration: none;
 }

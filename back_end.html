@@ -28,17 +28,68 @@
 
 
             <!-- Tasks 1 and 2 -->
-            print(simpsons_episodes)
 
+            filtered_episodes = {}
 
+            for episode in simpsons_episodes:
+                if(episode == "titles"):
+                    continue
+
+                imbd = simpsons_episodes[episode]['imdb_rating']
+                <!-- IF condition needed bc there were some eps with no imbd rating -->
+                if(imbd):
+                    if float(imbd) > 9.0:
+                        filtered_episodes[episode] = simpsons_episodes[episode]
+                        <!-- print(f"{episode}: {simpsons_episodes[episode]['views_title']} Viewers, {simpsons_episodes[episode]['imdb_rating']} IMDB Rating") -->
+            
+            <!-- print(filtered_episodes) -->
+            
+            sorted_episodes = sorted(filtered_episodes.items(), key = lambda ep: int(ep[1]["views_title"]), reverse=True)
+
+            for episode in sorted_episodes[1:]:
+                imbd = float(episode[1]['imdb_rating'])
+                if imbd > 9:
+                    print(f"{episode[0]}: {episode[1]['views_title']} Viewers, {episode[1]['imdb_rating']} IMDB Rating")
+
+            print("*"*12)
+            
             <!-- Tasks 3 & 4 -->
             import datetime
 
+            today = datetime.datetime.now()
+            diff = datetime.timedelta(days = 21)
+            date = today - diff
+            print(date)
 
+            print("*"*12)
             <!-- Tasks 5 & 6 -->
+            temp_key = ''
 
+            for date in provider_versions:
+                output = ''
+                if(not temp_key):
+                    temp_key = date
 
+                for sub_key in provider_versions[date]:
+                    if(provider_versions[temp_key][sub_key] != provider_versions[date][sub_key]):
+                        output += sub_key + " : " + str(provider_versions[date][sub_key]) + ", "
+
+                if(not output):
+                    print(date + ": " + "No Changes Found")
+                else:
+                    <!-- Slice string to remove last 2 characters -->
+                    output = output[:len(output) - 2]
+                    print(date +": " + output)
+
+                # Change Temp Key
+                temp_key = date
+
+            print("*"*12)
             <!-- Task 7 -->
+            import csv
+
+            print("with open('data_file.csv', newline='') as csvfile:")
+            print("\t dialect = csv.reader(csvfile, dialect='unix')")
 
         </py-script>
     </section>
